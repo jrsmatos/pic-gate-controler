@@ -74,7 +74,6 @@ void putch(unsigned char txData){
 }
 
 void Serial_send(){
-    
     char buff_Char1  = 0;
     buff_Char1      |= (gatestate);
     
@@ -138,7 +137,6 @@ void FC_Check(){
 }
 
 void IO_Check(){ //Inputs and Outputs Polling
-    
     /* Start button managment (Edge detection and Hold Timer) */
     IO.START_BUTTON = !PORTBbits.RB3;       
     if ((IO.START_BUTTON != IO.LS_START_BUTTON) && IO.START_BUTTON_EN){
@@ -147,9 +145,8 @@ void IO_Check(){ //Inputs and Outputs Polling
             T1CONbits.TMR1ON   = 1;
             IO.START_BUTTON_EN = 0;
         } 
-    } 
+    }
     IO.LS_START_BUTTON = IO.START_BUTTON;
-    
     
     IO.FC_OPEN   = PORTBbits.RB1;
     IO.FC_CLOSED = !PORTBbits.RB2;
@@ -239,7 +236,6 @@ void FSM_Main(){
 }
 
 int main() {
-    
     /* IO Setup */
     //Inputs
     INTCON2bits.RBPU = 0; //internal Pull-Up Enable
@@ -271,7 +267,7 @@ int main() {
     T0CONbits.PSA     = 0;
     T0CONbits.T0PS    = 0b111; //1:256 PRE
     
-    //Timer 1 Setup (Bot„o Start Hold))
+    //Timer 1 Setup (Bot√£o Start Hold))
     T1CONbits.TMR1CS  = 0b00; 
     T1CONbits.T1CKPS  = 0b11;
     T1CONbits.T1RD16  = 1;
@@ -311,8 +307,7 @@ int main() {
     
     /* Var's initial value setup */ 
     IO.byte            = 0;
-    SYS.byte           = 0;
-    
+    SYS.byte           = 0;    
     IO.START_BUTTON_EN = 1;  
     SYS.FIRST_START    = 1; 
     
