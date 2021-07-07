@@ -78,13 +78,6 @@ void Serial_send(){
     buff_Char1      |= (SYS.ERROR << 3);
     buff_Char1      |= (gatestate);
     
-    char buff_Char2  = 0; 
-    buff_Char2 |= (IO.START_BUTTON << 6);
-    buff_Char2 |= (IO.FC_OPEN      << 5);
-    buff_Char2 |= (IO.FC_CLOSED    << 4);
-    buff_Char2 |= (IO.PHTCELL      << 3);
-    buff_Char2 |= (state  &  0b00000011);
-    
     putch(buff_Char1);
 }
 
@@ -263,9 +256,9 @@ int main() {
     T0CONbits.PSA     = 0;
     T0CONbits.T0PS    = 0b111; //1:256 PRE
     
-    //Timer 1 Setup (Botão Start Hold))
+    //Timer 1 Setup (BotÃ£o Start Hold))
     T1CONbits.TMR1CS  = 0b00; 
-    T1CONbits.T1CKPS  = 0b11; //1:8 pré (máx)
+    T1CONbits.T1CKPS  = 0b11; //1:8 prÃ© (mÃ¡x)
     T1CONbits.T1RD16  = 1;
     T1CONbits.TMR1ON  = 0;
     
